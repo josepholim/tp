@@ -1,7 +1,7 @@
 ---
   layout: default.md
-  title: "Developer Guide"
-  pageNav: 3
+    title: "Developer Guide"
+    pageNav: 3
 ---
 
 # KeepInTouch Developer Guide
@@ -168,11 +168,11 @@ This section describes some noteworthy details on how certain features are imple
 
 **Rationale**
 
-  * Previous help feature simply opens a page with a link to the website, this is bad because:
+* Previous help feature simply opens a page with a link to the website, this is bad because:
     * The flow is lengthy
     * User may not be able to access website when operating without the internet
-    
-    Therefore, we want to make this better by simplifying the flow. We do this by adding:
+
+  Therefore, we want to make this better by simplifying the flow. We do this by adding:
     * Making the help command return things in the application console
     * Letting users enter an extra argument to specify what command they need guiding on
 
@@ -255,13 +255,13 @@ The following activity diagram summarizes what happens when a user executes a ne
 **Aspect: How undo & redo executes:**
 
 * **Alternative 1 (current choice):** Saves the entire address book.
-  * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
+    * Pros: Easy to implement.
+    * Cons: May have performance issues in terms of memory usage.
 
 * **Alternative 2:** Individual command knows how to undo/redo by
   itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
-  * Cons: We must ensure that the implementation of each individual command are correct.
+    * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
+    * Cons: We must ensure that the implementation of each individual command are correct.
 
 _{more aspects and alternatives to be added}_
 
@@ -309,8 +309,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | user                                                       | delete a contact            | remove a contact (by name) that I do not need                                                                               |
 | `* * *`  | user                                                       | view all contact            | easily see and know what contacts are currently stored in the application in one place                                      |
 | `* *`    | user                                                        | view all notes              | easily see and know what notes are currently stored in the application in one place                                         |
-| `* *`    | user                                                        | add notes to a contact      | record additional information about that contact in the notes                                                               |
-| `* *`    | user                                                        | delete notes to a contact   | remove additional information that are no longer needed about that contact in the notes                                     |
+| `* *`    | user                                                        | add notes to a contact      | record additional information about that contact as notes                                                                   |
+| `* *`    | user                                                        | delete notes to a contact   | remove additional information about that contact that are no longer relevant                 |
 | `* *`    | user who has some event to do             | add an event                | record an event with start time and also end time, location and any additional information like what to do during the event |
 | `* *`    | user who has/had some event to do      | delete an event             | remove an event after it is obsolete, cancelled or no longer needed to be recorded                                          |
 | `* *`    | tidy user | tag a contact with a label  | keep my contacts oraganised and categorised                                                                                 |
@@ -412,7 +412,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to add a note to a contact.
-2.  KeepInTouch adds the note to the contact.
+2.  KeepInTouch adds a note to the contact.
 
     Use case ends.
 
@@ -434,8 +434,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to delete a note from a contact.
-2.  KeepInTouch deletes the note from the contact.
+1.  User requests to delete an existing note from a contact.
+2.  KeepInTouch deletes the specified note from the contact.
 
     Use case ends.
 
@@ -456,7 +456,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 1c. User inputs a note that does not exist.
 
     * 1c1. KeepInTouch shows a message indicating that the note cannot be found.
-  
+
       Use case ends.
 
 **Use case: UC08 - Add an event**
@@ -520,15 +520,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 1b1. Extra argument is a command word.
 
-      * KeepInTouch returns documentation on that command word.
+        * KeepInTouch returns documentation on that command word.
 
     * 1b2. Extra argument is not a command word, but is somewhat similar.
 
-      * KeepInTouch suggests the command word with the highest degree of similarity to the input
+        * KeepInTouch suggests the command word with the highest degree of similarity to the input
 
     * 1b3. Extra argument is not a command word, and isn't recognizably close to a command word.
 
-      * KeepInTouch lets the user know that it is unable to recognize the input.
+        * KeepInTouch lets the user know that it is unable to recognize the input.
 
       Use case ends.
 
@@ -657,15 +657,15 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-   1. Download the jar file and copy into an empty folder
+    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
 1. Saving window preferences
 
-   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
+    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
 1. _{ more test cases …​ }_
@@ -674,16 +674,16 @@ testers are expected to do more *exploratory* testing.
 
 1. Deleting a person while all persons are being shown
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+    1. Test case: `delete 1`<br>
+       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+    1. Test case: `delete 0`<br>
+       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
+    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+       Expected: Similar to previous.
 
 1. _{ more test cases …​ }_
 
@@ -691,6 +691,6 @@ testers are expected to do more *exploratory* testing.
 
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 1. _{ more test cases …​ }_
