@@ -8,7 +8,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.note.Note;
 import seedu.address.model.person.Person;
-import seedu.address.model.person.UniquePersonList;
+import seedu.address.model.person.PersonList;
 
 /**
  * Wraps all data at the address-book level
@@ -16,7 +16,7 @@ import seedu.address.model.person.UniquePersonList;
  */
 public class AddressBook implements ReadOnlyAddressBook {
 
-    private final UniquePersonList persons;
+    private final PersonList persons;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -26,7 +26,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      *   among constructors.
      */
     {
-        persons = new UniquePersonList();
+        persons = new PersonList();
     }
 
     public AddressBook() {}
@@ -43,7 +43,6 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Replaces the contents of the person list with {@code persons}.
-     * {@code persons} must not contain duplicate persons.
      */
     public void setPersons(List<Person> persons) {
         this.persons.setPersons(persons);
@@ -61,14 +60,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     //// person-level operations
 
     /**
-     * Returns true if a person with the same identity as {@code person} exists in the address book.
-     */
-    public boolean hasPerson(Person person) {
-        requireNonNull(person);
-        return persons.contains(person);
-    }
-
-    /**
      * Adds a person to the address book.
      * The person must not already exist in the address book.
      */
@@ -79,7 +70,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Replaces the given person {@code target} in the list with {@code editedPerson}.
      * {@code target} must exist in the address book.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
      */
     public void setPerson(Person target, Person editedPerson) {
         requireNonNull(editedPerson);

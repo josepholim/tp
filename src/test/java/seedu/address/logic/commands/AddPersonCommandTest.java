@@ -17,7 +17,6 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.Messages;
-import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
@@ -43,16 +42,6 @@ public class AddPersonCommandTest {
         assertEquals(String.format(AddPersonCommand.MESSAGE_SUCCESS, Messages.format(validPerson)),
                 commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(validPerson), modelStub.personsAdded);
-    }
-
-    @Test
-    public void execute_duplicatePerson_throwsCommandException() {
-        Person validPerson = new PersonBuilder().build();
-        AddPersonCommand addPersonCommand = new AddPersonCommand(validPerson);
-        ModelStub modelStub = new ModelStubWithPerson(validPerson);
-
-        assertThrows(CommandException.class,
-                AddPersonCommand.MESSAGE_DUPLICATE_PERSON, () -> addPersonCommand.execute(modelStub));
     }
 
     @Test
@@ -136,11 +125,6 @@ public class AddPersonCommandTest {
         }
 
         @Override
-        public boolean hasPerson(Person person) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public void deletePerson(Person target) {
             throw new AssertionError("This method should not be called.");
         }
@@ -181,12 +165,6 @@ public class AddPersonCommandTest {
             requireNonNull(person);
             this.person = person;
         }
-
-        @Override
-        public boolean hasPerson(Person person) {
-            requireNonNull(person);
-            return this.person.isSamePerson(person);
-        }
     }
 
     /**
@@ -194,12 +172,6 @@ public class AddPersonCommandTest {
      */
     private class ModelStubAcceptingPersonAdded extends ModelStub {
         final ArrayList<Person> personsAdded = new ArrayList<>();
-
-        @Override
-        public boolean hasPerson(Person person) {
-            requireNonNull(person);
-            return personsAdded.stream().anyMatch(person::isSamePerson);
-        }
 
         @Override
         public void addPerson(Person person) {
