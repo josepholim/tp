@@ -272,8 +272,8 @@ Action             | Format, Examples
 **List Contact**   | `list contact`
 **Add Tag**        | `add tag -id CONTACT_ID -t TAGNAME` <br> eg., `add tag -id 1 -t frontend`
 **Delete Tag**        | `delete tag -id CONTACT_ID -t TAGNAME` <br> eg., `delete tag -id 1 -t frontend`
-**Add Note**       | `add note -n NAME -t NOTE_TITLE -c NOTE_CONTENT` <br> e.g., `add note -n Daniel -t Open Position -e Applications for SWE full-time positions will open soon`
-**Delete Note**    | `delete note -n NAME -t NOTE_TITLE`<br> e.g., `delete note -n Aaron -t Meeting Topics`
+**Add Note**       | `add note -id CONTACT_ID -tit NOTE_TITLE -con NOTE_CONTENT` <br> e.g., `add note -id 1 -tit Meeting Topics -con The topic is about the framework design of the project`
+**Delete Note**    | `delete note -id CONTACT_ID -nid NOTE_ID`<br> e.g., `delete note -id 1 -nid 1`
 **List Notes**     | `list notes`
 **Add Event**      | `add event -id CONTACT_ID -en EVENT_NAME -st START_TIME [-et END_TIME] [-loc LOCATION] [-info INFORMATION]` <br> e.g., `add event -id 1 -en Meeting with professor -st 12:00 -et 01:00 -loc COM 1 Basement -info Discuss the project implementation with the professor`
 **Delete Event**   | `delete event -id CONTACT_ID -eid EVENT_ID`<br> e.g., `delete event -id 1 -eid 1`
